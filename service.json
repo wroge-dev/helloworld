@@ -1,0 +1,25 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+      "name": "helloworld",
+      "namespace": "default",
+      "labels": {
+        "k8s-app": "helloworld"
+      }
+    },
+    "spec": {
+      "ports": [
+        {
+          "protocol": "TCP",
+          "port": 8080,
+          "targetPort": 8080,
+          "nodePort": 30123
+        }
+      ],
+      "selector": {
+        "k8s-app": "helloworld"
+      },
+      "type": "LoadBalancer"
+  }
+}

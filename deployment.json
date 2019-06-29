@@ -1,0 +1,44 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "name": "helloworld",
+    "namespace": "default"
+  },
+  "spec": {
+    "replicas": 8,
+    "selector": {
+      "matchLabels": {
+        "k8s-app": "helloworld"
+      }
+    },
+    "template": {
+      "metadata": {
+        "name": "helloworld",
+        "creationTimestamp": null,
+        "labels": {
+          "k8s-app": "helloworld"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "helloworld",
+            "image": "wroge/helloworld:v1",
+            "resources": {},
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30
+      }
+    },
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      }
+    }
+  }
+}

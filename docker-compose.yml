@@ -1,0 +1,16 @@
+version: "3"
+services:
+  api:
+    image: wroge/helloworld:v1
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+    ports:
+      - "8080:8080"
+    networks:
+      - host
+networks:
+  host:
